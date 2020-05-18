@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import { createBrowserHistory } from 'history';
 import Search from './search'
 import Recipe from './recipe'
 import './App.css';
 import { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 function App() {
 
 const [recipe, setRecipe] = useState()
-const history = createBrowserHistory();
+const history = useHistory()
 
 
 var myHeaders = new Headers();
@@ -33,8 +32,7 @@ useEffect(()=>{
   if(recipe !== undefined){
     history.push(`/recipe/${recipe.idMeal}`)
   };
-
-},[recipe])
+},[recipe,history])
 
 
   return (
